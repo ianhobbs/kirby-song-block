@@ -1,4 +1,4 @@
-# Song Block for Kirby
+# Song Block for Kirby CMS
 
 An extended audio block for [Kirby](https://getkirby.com): an audio player with a poster image, title, subtitle and rich-text description — with a live preview in the Panel.
 
