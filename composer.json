@@ -1,0 +1,30 @@
+{
+    "name": "ianhobbs/song-block",
+    "description": "An extended audio block for Kirby with poster image, title, subtitle and description",
+    "type": "kirby-plugin",
+    "license": "MIT",
+    "homepage": "https://github.com/ian-hobbs/song-block",
+    "keywords": [
+        "kirby",
+        "kirby-plugin",
+        "kirby-cms",
+        "audio",
+        "block",
+        "music"
+    ],
+    "authors": [
+        {
+            "name": "Ian Hobbs",
+            "email": "ian@ianhobbs.net"
+        }
+    ],
+    "require": {
+        "getkirby/composer-installer": "^1.1"
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "allow-plugins": {
+            "getkirby/composer-installer": true
+        }
+    }
+}
