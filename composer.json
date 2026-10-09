@@ -1,7 +1,8 @@
 {
     "name": "ianhobbs/song-block",
-    "description": "An extended audio block for Kirby with poster image, title, subtitle and description",
+    "description": "Obsolete: use ianhobbs/audio-block. An extended audio block for Kirby with poster image, title, subtitle and description",
     "type": "kirby-plugin",
+    "abandoned": "ianhobbs/audio-block",
     "license": "MIT",
     "homepage": "https://github.com/ian-hobbs/song-block",
     "keywords": [
