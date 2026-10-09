@@ -1,7 +1,7 @@
 title: Poster
 
 accept:
-  extension: jpg, jpeg, png, webp
+  extension: jpg, jpeg, png, webp, svg
 
 fields:
   alt:

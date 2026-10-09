@@ -1,5 +1,6 @@
 name: Song
 icon: file-audio
+label: "{{ title }}"
 tabs:
   main:
     label: Main
@@ -30,9 +31,25 @@ tabs:
         marks:
           - bold
           - italic
+      bgcolor:
+        type: color
+        label: Background color
+        width: 1/2
+      textcolor:
+        type: color
+        label: Text color
+        width: 1/2
   settings:
     label: Settings
     fields:
+      layout:
+        type: toggles
+        label: Poster layout
+        options:
+          side: Beside text
+          background: Background
+        default: side
+        help: Background stretches the poster behind the player.
       controls:
         type: toggle
         text: Show controls?
@@ -43,3 +60,4 @@ tabs:
         text: autoplay
         width: 1/2
         default: false
+        help: Most browsers block audio autoplay until the visitor has interacted with the page.

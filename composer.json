@@ -1,10 +1,9 @@
 {
     "name": "ianhobbs/song-block",
-    "description": "Obsolete: use ianhobbs/audio-block. An extended audio block for Kirby with poster image, title, subtitle and description",
+    "description": "A song block for Kirby CMS: audio player with poster image (beside the text or as background), title, subtitle, description and colours",
     "type": "kirby-plugin",
-    "abandoned": "ianhobbs/audio-block",
     "license": "MIT",
-    "homepage": "https://github.com/ian-hobbs/song-block",
+    "homepage": "https://github.com/ianhobbs/kirby-song-block",
     "keywords": [
         "kirby",
         "kirby-plugin",
@@ -19,8 +18,16 @@
             "email": "ian@ianhobbs.net"
         }
     ],
+    "support": {
+        "issues": "https://github.com/ianhobbs/kirby-song-block/issues",
+        "source": "https://github.com/ianhobbs/kirby-song-block"
+    },
     "require": {
-        "getkirby/composer-installer": "^1.1"
+        "php": ">=8.1",
+        "getkirby/composer-installer": "^1.2"
+    },
+    "conflict": {
+        "getkirby/cms": "<4.0.0 || >=6.0.0"
     },
     "config": {
         "optimize-autoloader": true,
