@@ -1,5 +1,13 @@
 # Song Block for Kirby CMS
 
+> [!WARNING]
+> **Deprecated.** This plugin is no longer maintained. Use [ianhobbs/audio-block](https://github.com/ianhobbs/kirby-audio-block) 2.1 or later instead: it registers the `song` block type as a legacy alias, so existing content keeps working without edits.
+>
+> ```bash
+> composer remove ianhobbs/song-block
+> composer require ianhobbs/audio-block
+> ```
+
 An extended audio block for [Kirby](https://getkirby.com): an audio player with a poster image, title, subtitle and rich-text description — with a live preview in the Panel.
 
 ## Features
