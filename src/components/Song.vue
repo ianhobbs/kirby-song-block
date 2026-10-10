@@ -168,7 +168,7 @@ export default {
 }
 .k-block-type-song-title,
 .k-block-type-song-subtitle {
-  font-size: 1.5rem;
+  font-size: 1.23rem;
 }
 .k-block-type-song-title {
   font-weight: 600;
