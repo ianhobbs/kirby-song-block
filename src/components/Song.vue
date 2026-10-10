@@ -26,6 +26,7 @@
       </div>
       <div class="k-block-type-song-info" @dblclick.stop>
         <k-writer
+          v-if="titleIsWriter"
           :inline="true"
           :marks="false"
           :placeholder="field('title').placeholder"
@@ -33,6 +34,17 @@
           class="k-block-type-song-title"
           @input="update({ title: $event })"
         />
+        <!-- a text title may hold raw HTML (e.g. <h3>) that an inline
+             writer would drop on save, so it is edited in the drawer -->
+        <button
+          v-else
+          :class="{ 'is-empty': !titleText }"
+          class="k-block-type-song-title"
+          type="button"
+          @click="open"
+        >
+          {{ titleText || field('title').placeholder }}
+        </button>
         <k-writer
           :inline="true"
           :marks="false"
@@ -88,6 +100,14 @@ export default {
     },
     source() {
       return (this.content.source || [])[0] || {};
+    },
+    // site blueprints may override the title as a plain text field
+    titleIsWriter() {
+      return this.field("title")?.type === "writer";
+    },
+    titleText() {
+      const { stripHTML, unescapeHTML } = this.$helper.string;
+      return unescapeHTML(stripHTML(this.content.title ?? "")).trim();
     },
     // blocks saved before the layout option existed have no stored
     // value, so fall back to the blueprint default
@@ -152,6 +172,15 @@ export default {
 }
 .k-block-type-song-title {
   font-weight: 600;
+}
+button.k-block-type-song-title {
+  display: block;
+  width: 100%;
+  padding: 0;
+  text-align: start;
+}
+button.k-block-type-song-title.is-empty {
+  opacity: 0.5;
 }
 .k-block-type-song-subtitle {
   margin-bottom: 1rem;
