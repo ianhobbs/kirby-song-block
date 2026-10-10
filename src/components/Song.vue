@@ -49,9 +49,25 @@
           class="k-block-type-song-description"
           @input="update({ description: $event })"
         />
-        <audio class="k-block-type-song-element" controls>
+        <audio
+          ref="audio"
+          class="k-block-type-song-element"
+          controls
+          @play="playing = true"
+          @pause="playing = false"
+        >
           <source :src="source.url" :type="mime">
         </audio>
+        <!-- replaces the native controls when the column is too narrow -->
+        <div class="k-block-type-song-compact">
+          <k-button
+            :icon="playing ? 'song-pause' : 'play'"
+            :title="playing ? 'Pause' : 'Play'"
+            size="sm"
+            variant="filled"
+            @click.stop="toggle"
+          />
+        </div>
       </div>
     </div>
   </k-block-figure>
@@ -61,7 +77,8 @@
 export default {
   data() {
     return {
-      mime: null
+      mime: null,
+      playing: false
     };
   },
   computed: {
@@ -85,6 +102,17 @@ export default {
         color: this.content.textcolor || null,
         backgroundImage: this.isBackground ? `url("${this.poster.url}")` : null
       };
+    }
+  },
+  methods: {
+    toggle() {
+      const audio = this.$refs.audio;
+
+      if (audio.paused) {
+        audio.play();
+      } else {
+        audio.pause();
+      }
     }
   },
   watch: {
@@ -117,6 +145,7 @@ export default {
 .k-block-type-song-info {
   flex: 1;
   min-width: 0;
+  container: song-info / inline-size;
 }
 .k-block-type-song-poster {
   width: 12rem;
@@ -138,7 +167,24 @@ export default {
   line-height: 1.5;
 }
 .k-block-type-song-element {
+  display: block;
+  width: 100%;
+  max-width: 30rem;
   margin-top: 2rem;
   height: 2rem;
+}
+.k-block-type-song-compact {
+  display: none;
+  margin-top: 1rem;
+}
+// the native player needs roughly 20rem to show all of its controls;
+// below that swap it for a single play/pause button
+@container song-info (width < 20rem) {
+  .k-block-type-song-element {
+    display: none;
+  }
+  .k-block-type-song-compact {
+    display: block;
+  }
 }
 </style>
