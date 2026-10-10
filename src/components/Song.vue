@@ -43,21 +43,23 @@
         />
         <k-writer
           :inline="true"
-          :marks="false"
+          :marks="field('description').marks"
           :placeholder="field('description').placeholder"
           :value="content.description"
           class="k-block-type-song-description"
           @input="update({ description: $event })"
         />
+        <!-- src sits on <audio> so that picking another file reloads it;
+             a changed <source> is ignored until load() is called -->
         <audio
           ref="audio"
+          :src="source.url"
           class="k-block-type-song-element"
           controls
           @play="playing = true"
           @pause="playing = false"
-        >
-          <source :src="source.url" :type="mime">
-        </audio>
+          @emptied="playing = false"
+        />
         <!-- replaces the native controls when the column is too narrow -->
         <div class="k-block-type-song-compact">
           <k-button
@@ -77,7 +79,6 @@
 export default {
   data() {
     return {
-      mime: null,
       playing: false
     };
   },
@@ -109,22 +110,15 @@ export default {
       const audio = this.$refs.audio;
 
       if (audio.paused) {
-        audio.play();
+        audio.play().catch(error => {
+          // pausing before playback has started also rejects
+          if (error.name !== "AbortError") {
+            this.$panel.notification.error(error);
+          }
+        });
       } else {
         audio.pause();
       }
-    }
-  },
-  watch: {
-    "source.link": {
-      handler (link) {
-        if (link) {
-          this.$api.get(link).then(file => {
-            this.mime = file.mime;
-          });
-        }
-      },
-      immediate: true
     }
   }
 };

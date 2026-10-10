@@ -38,8 +38,8 @@ if ($background === true) {
   </figure>
   <?php endif ?>
   <div class="song-info">
-    <h1 class="song-title"><?= $block->title()->html() ?></h1>
-    <h2 class="song-subtitle"><?= $block->subtitle()->html() ?></h2>
+    <h1 class="song-title"><?= $block->title() ?></h1>
+    <h2 class="song-subtitle"><?= $block->subtitle() ?></h2>
     <div class="song-description">
       <?= $block->description() ?>
     </div>

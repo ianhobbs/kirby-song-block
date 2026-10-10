@@ -57,8 +57,8 @@ The block renders on the frontend via the bundled snippet (`snippets/blocks/song
 | --- | --- | --- |
 | `source` | files | Audio file (uses the `audio` file blueprint) |
 | `poster` | files | Poster image (uses the `poster` file blueprint) |
-| `title` | text | Song title |
-| `subtitle` | text | e.g. artist or album |
+| `title` | writer | Song title (inline, no marks) |
+| `subtitle` | writer | e.g. artist or album (inline, no marks) |
 | `description` | writer | Supports bold and italic |
 | `bgcolor` | color | Optional background colour |
 | `textcolor` | color | Optional text colour |

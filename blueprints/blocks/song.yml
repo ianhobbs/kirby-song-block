@@ -18,10 +18,14 @@ tabs:
         multiple: false
         width: 1/2
       title:
-        type: text
+        type: writer
+        inline: true
+        marks: false
         placeholder: Title
       subtitle:
-        type: text
+        type: writer
+        inline: true
+        marks: false
         placeholder: Subtitle
       description:
         type: writer
